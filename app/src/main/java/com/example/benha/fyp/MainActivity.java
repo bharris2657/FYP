@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -20,6 +21,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction()
+                .add(R.id.content_frame, new Homepage()).commit();
 
         //setting new toolbar as default
         android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar);
@@ -43,7 +48,14 @@ public class MainActivity extends AppCompatActivity {
                         //close drawer when new item pressed
                         mDrawerLayout.closeDrawers();
                         //navigation code here
+                        int id = menuItem.getItemId();
 
+                        if(id == R.id.home){
+
+                        }
+                        if(id == R.id.review){
+
+                        }
 
 
 
