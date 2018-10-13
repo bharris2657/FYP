@@ -22,9 +22,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
+        final android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
                 .add(R.id.content_frame, new Homepage()).commit();
+
+
 
         //setting new toolbar as default
         android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar);
@@ -51,10 +53,16 @@ public class MainActivity extends AppCompatActivity {
                         int id = menuItem.getItemId();
 
                         if(id == R.id.home){
-
+                            fragmentManager.beginTransaction()
+                                    .replace(R.id.content_frame, new Homepage()).commit();
                         }
                         if(id == R.id.review){
-
+                            fragmentManager.beginTransaction()
+                                    .replace(R.id.content_frame, new Review()).commit();
+                        }
+                        if(id == R.id.learning){
+                            fragmentManager.beginTransaction()
+                                    .replace(R.id.content_frame, new Learn()).commit();
                         }
 
 

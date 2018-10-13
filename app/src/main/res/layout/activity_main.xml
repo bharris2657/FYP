@@ -8,19 +8,21 @@
     android:fitsSystemWindows="true">
 
     <!-- Main fragment container -->
-    <android.support.constraint.ConstraintLayout
+    <FrameLayout
         android:id="@+id/content_frame"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent"
+        android:background="@android:color/white">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"/>
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar" />
 
-    </android.support.constraint.ConstraintLayout>
+
+    </FrameLayout>
 
     <!-- Container for menu items -->
     <android.support.design.widget.NavigationView
