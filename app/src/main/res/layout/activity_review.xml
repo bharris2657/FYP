@@ -6,19 +6,33 @@
     android:layout_height="match_parent"
     tools:context=".Review">
 
-    <TextView
-        android:id="@+id/reviewTest"
+
+    <Button
+        android:id="@+id/startReview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="163dp"
-        android:layout_marginTop="230dp"
-        android:layout_marginEnd="163dp"
-        android:layout_marginBottom="319dp"
-        android:textSize="72sp"
-        android:text="REVIEW"
-        android:textStyle="bold"
+        android:layout_marginStart="131dp"
+        android:layout_marginTop="184dp"
+        android:layout_marginEnd="131dp"
+        android:layout_marginBottom="335dp"
+        android:text="Start Review"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/testArray"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="162dp"
+        android:layout_marginTop="51dp"
+        android:layout_marginEnd="164dp"
+        android:layout_marginBottom="265dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/startReview" />
+
 </android.support.constraint.ConstraintLayout>
