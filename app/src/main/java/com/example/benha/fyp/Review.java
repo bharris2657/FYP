@@ -28,6 +28,9 @@ import java.util.Scanner;
 
 public class Review extends Fragment implements View.OnClickListener {
 
+
+    private android.support.v4.app.FragmentManager fragmentManager = getFragmentManager();
+
     private ArrayList<String> flashCards = new ArrayList<String>();
 
     public Review(){}
@@ -53,33 +56,10 @@ public class Review extends Fragment implements View.OnClickListener {
     public void onClick(View v){
         Button startReview = (Button) v.findViewById(R.id.startReview);
         startReview.setVisibility(View.GONE);
-        populateArrayList();
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.content_frame, new ReviewBehaviour()).commit();
     }
 
-    public ArrayList<String[]> populateArrayList() {
 
-        ArrayList<String[]> flashCards = new ArrayList<String[]>();
-        //loads text database
-        File file = new File(Environment.getExternalStorageDirectory(),"cardDatabase.txt");
-
-            try {
-                BufferedReader br = new BufferedReader(new FileReader(file));
-                String line;
-
-                while ((line = br.readLine()) != null) {
-                //creates arraylist of arrays referenced by 0 0 for question or 0 1 for answer 0 2 for score etc
-                    String[]lineArray = line.split(";");
-                    flashCards.add(lineArray);
-                    }
-
-                    br.close();
-            }
-            catch (IOException e) {
-
-            }
-
-        TextView textView = (TextView) getView().findViewById(R.id.testArray);
-        return flashCards;
-    }
 
 }
