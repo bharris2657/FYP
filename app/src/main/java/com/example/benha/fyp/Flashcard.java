@@ -21,59 +21,75 @@ import java.util.Scanner;
 public class Flashcard {
 
     private int questionIndex;
-    private int subInfoIndex;
+    private int answerIndex;
     private int score;
     private ArrayList<String[]> cardList = populateArrayList();
 
 
-    public Flashcard(int qIndex, int sIndex){
+    public Flashcard(int qIndex){
         questionIndex = qIndex;
-        subInfoIndex = sIndex;
+        answerIndex = 1;
+        score = Integer.parseInt(cardList.get(qIndex)[2]);
 
     }
 
-    public void saveScore(int index, int score){
+    public void setScore(int i){
+        score = i;
+    }
+
+    public int getScore(){
+        return Integer.parseInt(cardList.get(questionIndex)[2]);
+    }
+
+    public void saveScore( int addScore){
         //get a list which represents a card
-        String[] card = cardList.get(index);
+        String[] card = cardList.get(questionIndex);
+
         //make a string builder in order to join the card together
         StringBuilder fullLine = new StringBuilder();
+
         File file = new File(Environment.getExternalStorageDirectory(),"cardDatabase.txt");
+
         //put the card into one string called fullLine
-        for(int i = 0; i < card.length ; i++){
+        for(int i = 0; i < card.length - 1 ; i++){
             fullLine.append(card[i]+";");
+        }
+        //gets the current score from the class and adds the new score from the constructor
+        int newScore = addScore + getScore();
+        setScore(newScore);
+
+        if(addScore > 0) {
+            fullLine.append(newScore);
+        }
+        //if 0 then the local score 0 is set
+        else{
+            fullLine.append(0);
+            setScore(0);
         }
         String oldContent = "", newContent = "";
         try{
             BufferedReader reader = new BufferedReader(new FileReader(file));
             //line loads in the first line of the file
-            String line = reader.readLine();
-            if(index == 0){
-                oldContent += oldContent + line + "\n";
+            String line;
+            while((line = reader.readLine()) != null) {
+                //oldconent adds itself and the first line
+                oldContent = oldContent + line + "\n";
             }
-            else {
-                for (int i = 0; i <= index; i++) {
-                    //oldconent adds itself and the first line
-                    oldContent = oldContent + line + "\n";
-                    //line changes to the next line
-                    line = reader.readLine();
-                }
-            }
-            Log.d("test1612", oldContent);
 
             ArrayList<String> oldContentArray = new ArrayList<String>(Arrays.asList(oldContent.split(System.lineSeparator())));
+
             //changes element in oldContentArray to new information
-            oldContentArray.set(index, fullLine.toString());
+            oldContentArray.set(questionIndex, fullLine.toString());
+
             //for loop to write oldContentArray to new string
             for(int i = 0 ; i <= oldContentArray.size()-1 ; i++){
-                newContent = newContent + oldContentArray.get(i) + System.lineSeparator();
+                newContent = newContent + oldContentArray.get(i) + "\r\n";
             }
+            Log.d("test1644", newContent);
 
-            //outputs to file
+            //writes newString to file
             BufferedWriter out = new BufferedWriter(new FileWriter(file));
-            for(String oldDb:oldContentArray){
-                out.write(oldDb);
-                out.newLine();
-            }
+            out.write(newContent);
             out.close();
 
 
@@ -86,12 +102,12 @@ public class Flashcard {
         return cardList.get(i);
     }
 
-    public String getQuestion(int i){
-        return cardList.get(i)[0];
+    public String getQuestion(){
+        return cardList.get(questionIndex)[0];
     }
 
-    public String getAnswer(int i){
-        return cardList.get(i)[1];
+    public String getAnswer(){
+        return cardList.get(questionIndex)[1];
     }
 
     public ArrayList<String[]> populateArrayList() {
