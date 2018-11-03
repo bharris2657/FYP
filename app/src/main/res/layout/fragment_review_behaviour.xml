@@ -23,12 +23,12 @@
             android:textSize="72dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.75"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.235" />
+            app:layout_constraintVertical_bias="0.244" />
 
         <LinearLayout
-            android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
             android:layout_height="114dp"
             android:layout_marginTop="89dp"
@@ -45,63 +45,29 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="Easy"
-                android:visibility="gone" />
+                android:text="Easy" />
 
             <Button
                 android:id="@+id/mediumButton"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="Medium"
-                android:visibility="gone" />
+                android:text="Medium" />
 
             <Button
                 android:id="@+id/hardButton"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="Hard"
-                android:visibility="gone" />
+                android:text="Hard" />
 
             <Button
                 android:id="@+id/incorrectButton"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="Wrong"
-                android:visibility="gone" />
+                android:text="Wrong" />
         </LinearLayout>
-
-        <Button
-            android:id="@+id/continueButton"
-            android:layout_width="match_parent"
-            android:layout_height="114dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="116dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            android:text="Continue"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/card"
-            app:layout_constraintVertical_bias="0.272" />
-
-        <TextView
-            android:id="@+id/scoreTracker"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="162dp"
-            android:layout_marginTop="36dp"
-            android:layout_marginEnd="164dp"
-            android:layout_marginBottom="32dp"
-            android:text="TextView"
-            app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/card" />
 
         <!--383 max-->
 
