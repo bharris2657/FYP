@@ -1,6 +1,7 @@
 package com.example.benha.fyp;
 
 
+import android.app.Application;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Environment;
@@ -18,6 +19,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 import static android.view.View.GONE;
 
@@ -27,9 +29,7 @@ import static android.view.View.GONE;
  */
 public class ReviewBehaviour extends Fragment implements View.OnClickListener {
 
-    private ArrayList<Flashcard> flashcards = populateFlashcardArray();
-    private Flashcard currentCard = flashcards.get(0);
-    private int cardCount = 0;
+    private FlashcardDatabase fCardDb;
 
     public ReviewBehaviour() {
         // Required empty public constructor
@@ -38,118 +38,46 @@ public class ReviewBehaviour extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        //gets Application to use to start fModel
         View view = inflater.inflate(R.layout.fragment_review_behaviour, container, false);
-        TextView text = (TextView) view.findViewById(R.id.card);
-        text.setText(currentCard.getQuestion());
-        Button easyButton = (Button) view.findViewById(R.id.easyButton);
-        Button mediumButton = (Button) view.findViewById(R.id.mediumButton);
-        Button hardButton = (Button) view.findViewById(R.id.hardButton);
-        Button incorrectButton = (Button) view.findViewById(R.id.incorrectButton);
-        Button contineButton = (Button) view.findViewById(R.id.continueButton);
-        contineButton.setOnClickListener(this);
-        easyButton.setOnClickListener(this);
-        mediumButton.setOnClickListener(this);
-        hardButton.setOnClickListener(this);
-        incorrectButton.setOnClickListener(this);
+        Application app = getActivity().getApplication();
+        FlashcardViewModel fModel = new FlashcardViewModel(app);
+        if(fModel.getAllFlashcards().size()>7){
+            fModel.deleteAll();
+        }
+        fModel.insert(new Flashcard("Question"+fModel.getAllFlashcards().size(), "Answer"+fModel.getAllFlashcards().size()));
+        List<Flashcard> fList =  fModel.getAllFlashcards();
 
+        TextView testText = view.findViewById(R.id.card);
+        testText.setText(fList.get(0).getQText());
+
+        Button continueButton = view.findViewById(R.id.continueButton);
+        continueButton.setOnClickListener(this);
         return view;
     }
 
     @Override
     public void onClick(View v) {
+
+        //All Testing Stuff
+        TextView testText = getView().findViewById(R.id.card);
+        TextView testText1 = getView().findViewById(R.id.scoreTracker);
+        Application app = getActivity().getApplication();
+        FlashcardViewModel fModel = new FlashcardViewModel(app);
+        List<Flashcard> fList =  fModel.getAllFlashcards();
+
         int id = v.getId();
-        if (id == R.id.continueButton){
-            showAnswer(currentCard);
-            Log.d("buttonTesting", "poop");
+        if(id == R.id.continueButton){
+            testText.setText(fList.get(0).getAText());
+            testText1.setText(""+fList.size());
         }
-        if (id == R.id.easyButton) {
-            currentCard.saveScore(15);
-            currentCard = loadCard(flashcards, cardCount);
-            cardCount++;
-        }
-        if (id == R.id.mediumButton) {
-            currentCard.saveScore(10);
-            currentCard = loadCard(flashcards, cardCount);
-            cardCount++;
-        }
-        if (id == R.id.hardButton) {
-            currentCard.saveScore(5);
-            currentCard = loadCard(flashcards, cardCount);
-            cardCount++;
-        }
-        if (id == R.id.incorrectButton) {
-            currentCard.saveScore(0);
-            currentCard = loadCard(flashcards, cardCount);
-            cardCount++;
-        }
-        if(cardCount > flashcards.size() - 1){
-            cardCount = 0;
-        }
-        //return;
     }
-    public Flashcard loadCard(ArrayList<Flashcard> fList, int index){
-        //inits all the buttons so they can be made visible/invisible
-        TextView text = (TextView) getView().findViewById(R.id.card);
-        TextView score = (TextView) getView().findViewById(R.id.scoreTracker);
-        Button contineButton = (Button) getView().findViewById(R.id.continueButton);
-        Button easyButton = (Button) getView().findViewById(R.id.easyButton);
-        Button mediumButton = (Button) getView().findViewById(R.id.mediumButton);
-        Button hardButton = (Button) getView().findViewById(R.id.hardButton);
-        Button incorrectButton = (Button) getView().findViewById(R.id.incorrectButton);
 
-        String scoreString = String.valueOf(fList.get(index).getScore());
-        score.setText(scoreString);
-        text.setText(fList.get(index).getAnswer());
-        contineButton.setVisibility(getView().VISIBLE);
-        easyButton.setVisibility(getView().GONE);
-        mediumButton.setVisibility(getView().GONE);
-        hardButton.setVisibility(getView().GONE);
-        incorrectButton.setVisibility(getView().GONE);
-
-        text.setText(fList.get(index).getQuestion());
-        return flashcards.get(index);
-    }
 
     public void showAnswer(Flashcard f){
-        //inits all the buttons so they can be made visible/invisible
-        TextView text = (TextView) getView().findViewById(R.id.card);
-        TextView score = (TextView) getView().findViewById(R.id.scoreTracker);
-        Button contineButton = (Button) getView().findViewById(R.id.continueButton);
-        Button easyButton = (Button) getView().findViewById(R.id.easyButton);
-        Button mediumButton = (Button) getView().findViewById(R.id.mediumButton);
-        Button hardButton = (Button) getView().findViewById(R.id.hardButton);
-        Button incorrectButton = (Button) getView().findViewById(R.id.incorrectButton);
 
-        String scoreString = String.valueOf(f.getScore());
-        score.setText(scoreString);
-        contineButton.setVisibility(getView().GONE);
-        easyButton.setVisibility(getView().VISIBLE);
-        mediumButton.setVisibility(getView().VISIBLE);
-        hardButton.setVisibility(getView().VISIBLE);
-        incorrectButton.setVisibility(getView().VISIBLE);
-        text.setText(f.getAnswer());
     }
 
-    public ArrayList<Flashcard> populateFlashcardArray(){
-        File file = new File(Environment.getExternalStorageDirectory(), "cardDatabase.txt");
-        ArrayList<Flashcard> flashCardArray = new ArrayList<Flashcard>();
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(file));
-            String line;
-            ArrayList<String[]> flashCardString = new ArrayList<String[]>();
-            while((line = br.readLine())!= null){
-                String[] lineSplit = line.split(";");
-                flashCardString.add(lineSplit);
-            }
-            for(int i = 0 ; i < flashCardString.size() ; i++){
-                Flashcard newFlash = new Flashcard(i);
-                flashCardArray.add(newFlash);
-            }
-        }catch(IOException e){
 
-        }
-        Log.d("test1815", flashCardArray.toString());
-        return flashCardArray;
-    }
 
 }
