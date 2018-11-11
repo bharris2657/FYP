@@ -26,6 +26,8 @@ public class FlashRepository {
 
     LiveData<List<Flashcard>> getLiveFlashcards() { return liveCards;}
 
+    void deleteCard(int index){deleteCard(index);}
+
     public void insert (Flashcard flashcard){
         new insertAsyncTask(fDao).execute(flashcard);
     }

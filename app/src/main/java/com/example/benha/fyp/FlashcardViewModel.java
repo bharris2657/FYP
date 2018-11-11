@@ -33,4 +33,6 @@ public class FlashcardViewModel extends AndroidViewModel {
     public void deleteAll(){
         fRep.deleteAll();
     }
+
+    public void deleteCard(int index){fRep.deleteCard(index);}
 }

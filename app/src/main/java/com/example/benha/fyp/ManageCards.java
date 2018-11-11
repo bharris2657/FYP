@@ -10,6 +10,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,7 +49,8 @@ public class ManageCards extends Fragment {
             }
         });
 
-        RecyclerView recyclerView = view.findViewById(R.id.recyclerview);
+        // gets recyclerview and assigns it to the recycler adapter
+        final RecyclerView recyclerView = view.findViewById(R.id.recyclerview);
         final FlashcardListAdapter adapter = new FlashcardListAdapter(getContext());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
