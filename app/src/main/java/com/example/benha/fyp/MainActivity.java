@@ -79,7 +79,10 @@ public class MainActivity extends AppCompatActivity {
                             fragmentManager.beginTransaction()
                                     .replace(R.id.content_frame, new Learn()).commit();
                         }
-
+                        if(id == R.id.manageCards){
+                            fragmentManager.beginTransaction()
+                                    .replace(R.id.content_frame, new ManageCards()).commit();
+                        }
 
 
                         return true;

@@ -10,5 +10,9 @@
         <item
             android:id="@+id/learning"
             android:title="Learn"/>
+        <item
+            android:id="@+id/manageCards"
+            android:title="Manage Cards"
+        />
     </group>
 </menu>

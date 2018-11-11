@@ -11,16 +11,20 @@ public class FlashRepository {
 
     private FlashDao fDao;
     private List<Flashcard> allCards;
+    private LiveData<List<Flashcard>> liveCards;
 
     FlashRepository(Application application){
         FlashcardDatabase db = FlashcardDatabase.getDatabase(application);
         fDao = db.flashDao();
         allCards = fDao.getAllFlashcards();
+        liveCards = fDao.getLiveFlashcards();
     }
 
     List<Flashcard> getAllFlashcards(){
             return allCards;
     }
+
+    LiveData<List<Flashcard>> getLiveFlashcards() { return liveCards;}
 
     public void insert (Flashcard flashcard){
         new insertAsyncTask(fDao).execute(flashcard);

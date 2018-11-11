@@ -42,15 +42,9 @@ public class ReviewBehaviour extends Fragment implements View.OnClickListener {
         View view = inflater.inflate(R.layout.fragment_review_behaviour, container, false);
         Application app = getActivity().getApplication();
         FlashcardViewModel fModel = new FlashcardViewModel(app);
-        if(fModel.getAllFlashcards().size()>7){
-            fModel.deleteAll();
-        }
-        fModel.insert(new Flashcard("Question"+fModel.getAllFlashcards().size(), "Answer"+fModel.getAllFlashcards().size()));
         List<Flashcard> fList =  fModel.getAllFlashcards();
-
         TextView testText = view.findViewById(R.id.card);
         testText.setText(fList.get(0).getQText());
-
         Button continueButton = view.findViewById(R.id.continueButton);
         continueButton.setOnClickListener(this);
         return view;
