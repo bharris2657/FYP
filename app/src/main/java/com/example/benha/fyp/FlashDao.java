@@ -26,4 +26,13 @@ public interface FlashDao {
     @Query("DELETE FROM flashcard_table WHERE indexValue = :newIndex ")
     void deleteItem(int newIndex);
 
+    @Query("UPDATE flashcard_table SET score = score+:newScore WHERE indexValue = :newIndex")
+    void updateScore(int newIndex, int newScore);
+
+    @Query("SELECT score FROM flashcard_table WHERE indexValue = :newIndex")
+    int returnScore(int newIndex);
+
+    @Query("SELECT indexValue FROM flashcard_table WHERE indexValue = :newIndex")
+    int returnIndex(int newIndex);
+
 }

@@ -3,6 +3,7 @@ package com.example.benha.fyp;
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
+import android.util.Log;
 
 import java.util.List;
 
@@ -29,6 +30,12 @@ public class FlashcardViewModel extends AndroidViewModel {
     public void insert(Flashcard flashcard){
         fRep.insert(flashcard);
     }
+
+    public void updateScore(int index, int newScore){fRep.updateScore(index, newScore);}
+
+    public int returnScore(int index){
+        Log.d("Test 1449", ""+fRep.returnScore(index));
+        return fRep.returnScore(index);}
 
     public void deleteAll(){
         fRep.deleteAll();

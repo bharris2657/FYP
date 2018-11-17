@@ -3,6 +3,7 @@ package com.example.benha.fyp;
 import android.app.Application;
 import android.arch.lifecycle.LiveData;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -26,7 +27,15 @@ public class FlashRepository {
 
     LiveData<List<Flashcard>> getLiveFlashcards() { return liveCards;}
 
-    void deleteCard(int index){deleteCard(index);}
+    void deleteCard(int index){fDao.deleteItem(index);}
+
+    void updateScore(int index, int newScore){fDao.updateScore(index, newScore);
+        Log.d("Test1514", ""+fDao.returnIndex(0));}
+
+    int returnScore(int index){
+        Log.d("Test1550", ""+fDao.returnScore(index));
+        return fDao.returnScore(index);
+    }
 
     public void insert (Flashcard flashcard){
         new insertAsyncTask(fDao).execute(flashcard);

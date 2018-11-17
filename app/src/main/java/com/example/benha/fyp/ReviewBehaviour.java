@@ -62,9 +62,22 @@ public class ReviewBehaviour extends Fragment implements View.OnClickListener {
 
         int id = v.getId();
         if(id == R.id.continueButton){
-            testText.setText(fList.get(0).getAText());
-            testText1.setText(""+fList.size());
+            testText.setText(fList.get(0).getAText());/*
+            testText1.setText(""+fList.size());*/
+            fModel.updateScore(fList.get(0).getIndexValue(),5);
+            Log.d("TestScore", "Hello");
+            fList = fModel.getAllFlashcards();
+            testText1.setText(""+fList.get(0).getScore());
+            Log.d("TestIndexing", ""+fList.get(0).getIndexValue());
+            Log.d("TestSize", ""+fModel.getAllFlashcards().size());
+
         }
+    }
+
+    public void updateScore(int index, int newScore){
+
+
+
     }
 
 

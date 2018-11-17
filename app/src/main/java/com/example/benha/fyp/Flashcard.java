@@ -48,7 +48,6 @@ public class Flashcard {
     public Flashcard(String nQuestion, String nAnswer){
         qText = nQuestion;
         aText = nAnswer;
-        score = 0;
     }
 
     @NonNull
@@ -72,9 +71,7 @@ public class Flashcard {
         this.indexValue = index;
     }
 
-    public void setQText(String qText) {
-        this.qText = qText;
-    }
+    public void setQText(String qText) {this.qText = qText;}
 
     public void setAText(String aText) {
         this.aText = aText;

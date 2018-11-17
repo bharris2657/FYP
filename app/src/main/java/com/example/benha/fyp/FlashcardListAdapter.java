@@ -1,5 +1,6 @@
 package com.example.benha.fyp;
 
+import android.app.Application;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -37,7 +38,9 @@ public class FlashcardListAdapter extends RecyclerView.Adapter<FlashcardListAdap
     public void onBindViewHolder(FlashcardViewHolder holder, int position){
         if(flashcards != null){
             Flashcard current = flashcards.get(position);
-            holder.flashcardItemView.setText("Q: " + current.getQText() + "   A:" + current.getAText());
+            holder.flashcardItemView.setText("Q: " + current.getQText() + "   A: " + current.getAText()+"    S:"
+            +current.getScore());
+
         }
         else{
             holder.flashcardItemView.setText("No Flashcards");
