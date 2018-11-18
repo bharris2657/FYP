@@ -17,10 +17,10 @@ public interface FlashDao {
     @Query("DELETE FROM flashcard_table")
     void deleteAll();
 
-    @Query("SELECT * from flashcard_table ORDER BY indexValue DESC")
+    @Query("SELECT * from flashcard_table ORDER BY indexValue ASC")
     List<Flashcard> getAllFlashcards();
 
-    @Query("SELECT * from flashcard_table ORDER BY indexValue DESC")
+    @Query("SELECT * from flashcard_table ORDER BY indexValue ASC")
     LiveData<List<Flashcard>> getLiveFlashcards();
 
     @Query("DELETE FROM flashcard_table WHERE indexValue = :newIndex ")
@@ -34,5 +34,8 @@ public interface FlashDao {
 
     @Query("SELECT indexValue FROM flashcard_table WHERE indexValue = :newIndex")
     int returnIndex(int newIndex);
+
+    @Query("UPDATE flashcard_table SET score = 0 WHERE indexValue = :newIndex")
+    void resetScore(int newIndex);
 
 }

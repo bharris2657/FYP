@@ -59,4 +59,6 @@ public class FlashRepository {
         fDao.deleteAll();
     }
 
+    public void resetScore(int index){fDao.resetScore(index);}
+
 }

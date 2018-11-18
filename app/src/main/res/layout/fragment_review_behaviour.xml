@@ -28,13 +28,14 @@
             app:layout_constraintVertical_bias="0.235" />
 
         <LinearLayout
-            android:id="@+id/linearLayout2"
+            android:id="@+id/buttonContainer"
             android:layout_width="match_parent"
             android:layout_height="114dp"
             android:layout_marginTop="89dp"
             android:layout_marginBottom="160dp"
             android:orientation="horizontal"
             android:padding="5dp"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -45,32 +46,28 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="Easy"
-                android:visibility="gone" />
+                android:text="Easy" />
 
             <Button
                 android:id="@+id/mediumButton"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="Medium"
-                android:visibility="gone" />
+                android:text="Medium"/>
 
             <Button
                 android:id="@+id/hardButton"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="Hard"
-                android:visibility="gone" />
+                android:text="Hard" />
 
             <Button
                 android:id="@+id/incorrectButton"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="Wrong"
-                android:visibility="gone" />
+                android:text="Wrong"/>
         </LinearLayout>
 
         <Button
@@ -88,20 +85,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/card"
             app:layout_constraintVertical_bias="0.272" />
-
-        <TextView
-            android:id="@+id/scoreTracker"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="162dp"
-            android:layout_marginTop="36dp"
-            android:layout_marginEnd="164dp"
-            android:layout_marginBottom="32dp"
-            android:text="TextView"
-            app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/card" />
 
         <!--383 max-->
 
