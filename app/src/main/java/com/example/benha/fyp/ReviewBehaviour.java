@@ -47,11 +47,17 @@ public class ReviewBehaviour extends Fragment implements View.OnClickListener {
         Application app = getActivity().getApplication();
         FlashcardViewModel fModel = new FlashcardViewModel(app);
         //load a local list of flashcards
-        List<Flashcard> fList =  fModel.getAllFlashcards();
-        databaseIndex = fList.get(flashcardIndex).getIndexValue();
+        List<Flashcard> fList =  fModel.getReviewCards();
         //set the initial text to the question text
         TextView questionText = view.findViewById(R.id.card);
-        initialCard(fList, questionText);
+        if(fList.isEmpty()){
+            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_frame,
+                    new Review()).commit();
+        }
+        else{
+            initialCard(fList, questionText);
+            databaseIndex = fList.get(flashcardIndex).getIndexValue();
+        }
         Button continueButton = view.findViewById(R.id.continueButton);
         Button easyButton = view.findViewById(R.id.easyButton);
         Button mediumButton = view.findViewById(R.id.mediumButton);
@@ -70,7 +76,7 @@ public class ReviewBehaviour extends Fragment implements View.OnClickListener {
         TextView questionText = getView().findViewById(R.id.card);
         Application app = getActivity().getApplication();
         FlashcardViewModel fModel = new FlashcardViewModel(app);
-        List<Flashcard> fList =  fModel.getAllFlashcards();
+        List<Flashcard> fList =  fModel.getReviewCards();
 
         int id = v.getId();
         if(id == R.id.continueButton){
@@ -94,7 +100,7 @@ public class ReviewBehaviour extends Fragment implements View.OnClickListener {
         LinearLayout buttons = getView().findViewById(R.id.buttonContainer);
         Button continueButton = getView().findViewById(R.id.continueButton);
         //sets the local database index to update scores
-        databaseIndex = f.get(flashcardIndex).getIndexValue();
+        databaseIndex = f.get(index).getIndexValue();
         switch (viewId){
             case R.id.easyButton:
                 fm.updateScore(databaseIndex, 15);

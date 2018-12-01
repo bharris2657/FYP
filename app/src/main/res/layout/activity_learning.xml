@@ -6,4 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".Learn">
 
+    <Button
+        android:id="@+id/learnStart"
+        android:layout_width="181dp"
+        android:layout_height="96dp"
+        android:layout_marginStart="102dp"
+        android:layout_marginTop="158dp"
+        android:layout_marginEnd="101dp"
+        android:layout_marginBottom="313dp"
+        android:text="Start Learning"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

@@ -44,4 +44,8 @@ public class FlashcardViewModel extends AndroidViewModel {
     public void deleteCard(int index){fRep.deleteCard(index);}
 
     public void resetScore(int index){fRep.resetScore(index);}
+
+    public List<Flashcard> getLearnCards(){return fRep.getLearnCards();}
+
+    public List<Flashcard> getReviewCards(){return fRep.getReviewCards();}
 }

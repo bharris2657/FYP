@@ -61,4 +61,7 @@ public class FlashRepository {
 
     public void resetScore(int index){fDao.resetScore(index);}
 
+    public List<Flashcard> getLearnCards(){return fDao.getLearnCards();}
+
+    public List<Flashcard> getReviewCards(){return fDao.getReviewCards();}
 }

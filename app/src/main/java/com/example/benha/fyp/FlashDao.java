@@ -38,4 +38,10 @@ public interface FlashDao {
     @Query("UPDATE flashcard_table SET score = 0 WHERE indexValue = :newIndex")
     void resetScore(int newIndex);
 
+    @Query("SELECT * FROM flashcard_table where score == 0")
+    List<Flashcard> getLearnCards();
+
+    @Query("SELECT * FROM flashcard_table where score > 0")
+    List<Flashcard> getReviewCards();
+
 }
