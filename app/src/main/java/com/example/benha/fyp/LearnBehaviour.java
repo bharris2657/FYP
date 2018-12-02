@@ -68,7 +68,11 @@ public class LearnBehaviour extends Fragment implements View.OnClickListener{
     public void newCard(int index, List<Flashcard> f, FlashcardViewModel fm, View v, int id){
         TextView card = v.findViewById(R.id.learnCard);
         TextView answer = v.findViewById(R.id.learnAnswer);
-        databaseIndex = f.get(index).getIndexValue();
+        if(f.isEmpty()){
+            endList();
+            return;
+        }
+        databaseIndex = f.get(0).getIndexValue();
         switch (id){
             case R.id.easyLearn:
                 fm.updateScore(databaseIndex, 15);
@@ -83,14 +87,17 @@ public class LearnBehaviour extends Fragment implements View.OnClickListener{
                 //insert code to make card appear again
                 break;
         }
-        flashcardIndex++;
         Log.d("Test1524", ""+f.size());
-        if(flashcardIndex == f.size()){
+        Application app = getActivity().getApplication();
+        FlashcardViewModel fModel = new FlashcardViewModel(app);
+        f = fModel.getLearnCards();
+        //checks if it's out of bounds
+        if(f.isEmpty()){
             endList();
             return;
         }
-        card.setText(f.get(flashcardIndex).getQText());
-        answer.setText(f.get(flashcardIndex).getAText());
+        card.setText(f.get(0).getQText());
+        answer.setText(f.get(0).getAText());
     }
 
     public void endList(){

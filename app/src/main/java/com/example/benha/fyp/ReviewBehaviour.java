@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static android.view.View.GONE;
+import static android.view.View.generateViewId;
 
 
 /**
@@ -99,6 +100,11 @@ public class ReviewBehaviour extends Fragment implements View.OnClickListener {
     public void newCard(int index, List<Flashcard> f, FlashcardViewModel fm, TextView text, int viewId){
         LinearLayout buttons = getView().findViewById(R.id.buttonContainer);
         Button continueButton = getView().findViewById(R.id.continueButton);
+        //checks if it's out of bounds
+        if(f.isEmpty()){
+            endList();
+            return;
+        }
         //sets the local database index to update scores
         databaseIndex = f.get(index).getIndexValue();
         switch (viewId){
@@ -115,13 +121,17 @@ public class ReviewBehaviour extends Fragment implements View.OnClickListener {
                 fm.resetScore(databaseIndex);
                 break;
         }
-        //increments the flashcard list index
-        flashcardIndex++;
-        //checks if it's out of bounds
+        if(viewId != R.id.incorrectButton){
+            flashcardIndex++;
+        }
+        Application app = getActivity().getApplication();
+        FlashcardViewModel fModel = new FlashcardViewModel(app);
+        f = fModel.getReviewCards();
         if(flashcardIndex == f.size()){
             endList();
             return;
         }
+        //increments the flashcard list index
         //sets the new question text
         text.setText(f.get(flashcardIndex).getQText());
         //changes buttons over
@@ -137,6 +147,57 @@ public class ReviewBehaviour extends Fragment implements View.OnClickListener {
 
     public void initialCard(List<Flashcard> f, TextView text){
         text.setText(f.get(0).getQText());
+    }
+
+    public int formatChoice(Flashcard f){
+        int formatMarker = 0;
+        if(f.getScore() > 0){
+            formatMarker = 0;
+        }
+        if(f.getScore() > 50){
+            formatMarker = 1;
+        }
+        if(f.getScore() > 100){
+            formatMarker = 2;
+        }
+        return formatMarker;
+    }
+
+    public void multipleChoiceEasy(String question, String answer){
+        TextView questionText = getView().findViewById(R.id.questionText);
+        LinearLayout buttonContainer = getView().findViewById(R.id.multipleChoiceButtons);
+        List<Button> buttonList = new ArrayList();
+        Button answer1 = getView().findViewById(R.id.choice1);
+        Button answer2 = getView().findViewById(R.id.choice2);
+        Button answer3 = getView().findViewById(R.id.choice3);
+        Button answer4 = getView().findViewById(R.id.choice4);
+        buttonList.add(answer1);
+        buttonList.add(answer2);
+        buttonList.add(answer3);
+        buttonList.add(answer4);
+        questionText.setText(question);
+        buttonContainer.setVisibility(View.VISIBLE);
+    }
+
+    public void multipleChoiceHard(String question, String answer){
+        TextView questionText = getView().findViewById(R.id.questionText);
+        LinearLayout buttonContainer = getView().findViewById(R.id.multipleChoiceButtons);
+        List<Button> buttonList = new ArrayList();
+        Button answer1 = getView().findViewById(R.id.choice1);
+        Button answer2 = getView().findViewById(R.id.choice2);
+        Button answer3 = getView().findViewById(R.id.choice3);
+        Button answer4 = getView().findViewById(R.id.choice4);
+        buttonList.add(answer1);
+        buttonList.add(answer2);
+        buttonList.add(answer3);
+        buttonList.add(answer4);
+        questionText.setText(question);
+        buttonContainer.setVisibility(View.VISIBLE);
+    }
+
+    public void normalFlashcard(String question, String answer){
+        TextView questionText = getView().findViewById(R.id.questionText);
+        TextView answerText = getView().findViewById(R.id.answerText);
     }
 
 }
