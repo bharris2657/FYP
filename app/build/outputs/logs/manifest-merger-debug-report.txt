@@ -1,0 +1,165 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\Users\benha\OneDrive\Documents\GitHub\FYP\app\src\main\AndroidManifest.xml:2:1-27:12
+INJECTED from C:\Users\benha\OneDrive\Documents\GitHub\FYP\app\src\main\AndroidManifest.xml:2:1-27:12
+INJECTED from C:\Users\benha\OneDrive\Documents\GitHub\FYP\app\src\main\AndroidManifest.xml:2:1-27:12
+INJECTED from C:\Users\benha\OneDrive\Documents\GitHub\FYP\app\src\main\AndroidManifest.xml:2:1-27:12
+MERGED from [com.android.support:design:27.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\design-27.1.1.aar\019c5fbd19e3abcf4d6db11b21feec98\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\e9ee0f4d1cc7a02f0805bf011316d7b2\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\2e69415d19858bfed2b883e51ba5cfec\AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:support-v4:27.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\support-v4-27.1.1.aar\4bf1dbeba4a6fadd4a4dc2af46c64ffa\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.persistence.room:runtime:1.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\7d571bc38249004492215e1df87045f3\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:extensions:1.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\extensions-1.1.1.aar\2e9c31715291811843d45a2252231be9\AndroidManifest.xml:17:1-30:12
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.1.1.aar\5113dba10616c283d3eea3386fb06dcb\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\98d4f86d2636ea9299655a85381133b9\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:recyclerview-v7:27.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-27.1.1.aar\970f402d01e5be69130b9e497c252fd6\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:transition:27.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\transition-27.1.1.aar\2606c83ef0c915835b6f45bf6526b4ae\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-media-compat:27.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.1.1.aar\1ec701d5e7a577960cf25701cfd1e059\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\9d5c21c58e9a118614567e9c1fae6788\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\05af1e1d56ce011ee7470af02dbd6181\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\d685e4d59d0a6eca77c303fdddba5b7f\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:27.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\d952f13eea24263066045504387cfee0\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.persistence:db-framework:1.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\db-framework-1.1.1.aar\d3a62f1e1e01abe17980b88d54f87356\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.persistence:db:1.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\db-1.1.1.aar\f8c02e014ffecc73ff640458c3bd2218\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\livedata-1.1.1.aar\5a54034376c015bd1433bc9ff90168fa\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.1.aar\878b8911ab6f9bebc5945c76030bd831\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\e58a6824f9d66a2c5b39e009fd3c8b60\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\6e3e7d5e2f9ac284189262d8ce7b399e\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.1.aar\696b4d5c6cc2b8a87c87da02b08aea12\AndroidManifest.xml:17:1-22:12
+INJECTED from C:\Users\benha\OneDrive\Documents\GitHub\FYP\app\src\main\AndroidManifest.xml:2:1-27:12
+INJECTED from C:\Users\benha\OneDrive\Documents\GitHub\FYP\app\src\main\AndroidManifest.xml:2:1-27:12
+INJECTED from C:\Users\benha\OneDrive\Documents\GitHub\FYP\app\src\main\AndroidManifest.xml:2:1-27:12
+	package
+		ADDED from C:\Users\benha\OneDrive\Documents\GitHub\FYP\app\src\main\AndroidManifest.xml:3:5-36
+		INJECTED from C:\Users\benha\OneDrive\Documents\GitHub\FYP\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\benha\OneDrive\Documents\GitHub\FYP\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from C:\Users\benha\OneDrive\Documents\GitHub\FYP\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\benha\OneDrive\Documents\GitHub\FYP\app\src\main\AndroidManifest.xml:2:1-27:12
+		INJECTED from C:\Users\benha\OneDrive\Documents\GitHub\FYP\app\src\main\AndroidManifest.xml
+	android:versionCode
+		INJECTED from C:\Users\benha\OneDrive\Documents\GitHub\FYP\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\benha\OneDrive\Documents\GitHub\FYP\app\src\main\AndroidManifest.xml:2:1-27:12
+		INJECTED from C:\Users\benha\OneDrive\Documents\GitHub\FYP\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\Users\benha\OneDrive\Documents\GitHub\FYP\app\src\main\AndroidManifest.xml:2:11-69
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from C:\Users\benha\OneDrive\Documents\GitHub\FYP\app\src\main\AndroidManifest.xml:5:5-81
+	android:name
+		ADDED from C:\Users\benha\OneDrive\Documents\GitHub\FYP\app\src\main\AndroidManifest.xml:5:22-78
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from C:\Users\benha\OneDrive\Documents\GitHub\FYP\app\src\main\AndroidManifest.xml:6:5-80
+	android:name
+		ADDED from C:\Users\benha\OneDrive\Documents\GitHub\FYP\app\src\main\AndroidManifest.xml:6:22-77
+application
+ADDED from C:\Users\benha\OneDrive\Documents\GitHub\FYP\app\src\main\AndroidManifest.xml:8:5-25:19
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\2e69415d19858bfed2b883e51ba5cfec\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\2e69415d19858bfed2b883e51ba5cfec\AndroidManifest.xml:9:5-20
+MERGED from [android.arch.lifecycle:extensions:1.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\extensions-1.1.1.aar\2e9c31715291811843d45a2252231be9\AndroidManifest.xml:22:5-28:19
+MERGED from [android.arch.lifecycle:extensions:1.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\extensions-1.1.1.aar\2e9c31715291811843d45a2252231be9\AndroidManifest.xml:22:5-28:19
+	android:supportsRtl
+		ADDED from C:\Users\benha\OneDrive\Documents\GitHub\FYP\app\src\main\AndroidManifest.xml:13:9-35
+	android:label
+		ADDED from C:\Users\benha\OneDrive\Documents\GitHub\FYP\app\src\main\AndroidManifest.xml:11:9-41
+	android:roundIcon
+		ADDED from C:\Users\benha\OneDrive\Documents\GitHub\FYP\app\src\main\AndroidManifest.xml:12:9-54
+	android:icon
+		ADDED from C:\Users\benha\OneDrive\Documents\GitHub\FYP\app\src\main\AndroidManifest.xml:10:9-43
+	android:allowBackup
+		ADDED from C:\Users\benha\OneDrive\Documents\GitHub\FYP\app\src\main\AndroidManifest.xml:9:9-35
+	android:theme
+		ADDED from C:\Users\benha\OneDrive\Documents\GitHub\FYP\app\src\main\AndroidManifest.xml:14:9-65
+activity#com.example.benha.fyp.MainActivity
+ADDED from C:\Users\benha\OneDrive\Documents\GitHub\FYP\app\src\main\AndroidManifest.xml:15:9-21:20
+	android:name
+		ADDED from C:\Users\benha\OneDrive\Documents\GitHub\FYP\app\src\main\AndroidManifest.xml:15:19-47
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from C:\Users\benha\OneDrive\Documents\GitHub\FYP\app\src\main\AndroidManifest.xml:16:13-20:29
+action#android.intent.action.MAIN
+ADDED from C:\Users\benha\OneDrive\Documents\GitHub\FYP\app\src\main\AndroidManifest.xml:17:17-69
+	android:name
+		ADDED from C:\Users\benha\OneDrive\Documents\GitHub\FYP\app\src\main\AndroidManifest.xml:17:25-66
+category#android.intent.category.LAUNCHER
+ADDED from C:\Users\benha\OneDrive\Documents\GitHub\FYP\app\src\main\AndroidManifest.xml:19:17-77
+	android:name
+		ADDED from C:\Users\benha\OneDrive\Documents\GitHub\FYP\app\src\main\AndroidManifest.xml:19:27-74
+activity#com.example.benha.fyp.Homepage
+ADDED from C:\Users\benha\OneDrive\Documents\GitHub\FYP\app\src\main\AndroidManifest.xml:22:9-46
+	android:name
+		ADDED from C:\Users\benha\OneDrive\Documents\GitHub\FYP\app\src\main\AndroidManifest.xml:22:19-43
+activity#com.example.benha.fyp.Review
+ADDED from C:\Users\benha\OneDrive\Documents\GitHub\FYP\app\src\main\AndroidManifest.xml:23:9-44
+	android:name
+		ADDED from C:\Users\benha\OneDrive\Documents\GitHub\FYP\app\src\main\AndroidManifest.xml:23:19-41
+activity#com.example.benha.fyp.NewFlashcard
+ADDED from C:\Users\benha\OneDrive\Documents\GitHub\FYP\app\src\main\AndroidManifest.xml:24:9-59
+	android:name
+		ADDED from C:\Users\benha\OneDrive\Documents\GitHub\FYP\app\src\main\AndroidManifest.xml:24:19-47
+uses-sdk
+INJECTED from C:\Users\benha\OneDrive\Documents\GitHub\FYP\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Users\benha\OneDrive\Documents\GitHub\FYP\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\benha\OneDrive\Documents\GitHub\FYP\app\src\main\AndroidManifest.xml
+MERGED from [com.android.support:design:27.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\design-27.1.1.aar\019c5fbd19e3abcf4d6db11b21feec98\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design:27.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\design-27.1.1.aar\019c5fbd19e3abcf4d6db11b21feec98\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\e9ee0f4d1cc7a02f0805bf011316d7b2\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\e9ee0f4d1cc7a02f0805bf011316d7b2\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\2e69415d19858bfed2b883e51ba5cfec\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\2e69415d19858bfed2b883e51ba5cfec\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:support-v4:27.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\support-v4-27.1.1.aar\4bf1dbeba4a6fadd4a4dc2af46c64ffa\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:27.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\support-v4-27.1.1.aar\4bf1dbeba4a6fadd4a4dc2af46c64ffa\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.persistence.room:runtime:1.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\7d571bc38249004492215e1df87045f3\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.persistence.room:runtime:1.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\7d571bc38249004492215e1df87045f3\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:extensions:1.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\extensions-1.1.1.aar\2e9c31715291811843d45a2252231be9\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:extensions:1.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\extensions-1.1.1.aar\2e9c31715291811843d45a2252231be9\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.1.1.aar\5113dba10616c283d3eea3386fb06dcb\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.1.1.aar\5113dba10616c283d3eea3386fb06dcb\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\98d4f86d2636ea9299655a85381133b9\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\98d4f86d2636ea9299655a85381133b9\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:27.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-27.1.1.aar\970f402d01e5be69130b9e497c252fd6\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:27.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-27.1.1.aar\970f402d01e5be69130b9e497c252fd6\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:27.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\transition-27.1.1.aar\2606c83ef0c915835b6f45bf6526b4ae\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:27.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\transition-27.1.1.aar\2606c83ef0c915835b6f45bf6526b4ae\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.1.1.aar\1ec701d5e7a577960cf25701cfd1e059\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.1.1.aar\1ec701d5e7a577960cf25701cfd1e059\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\9d5c21c58e9a118614567e9c1fae6788\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\9d5c21c58e9a118614567e9c1fae6788\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\05af1e1d56ce011ee7470af02dbd6181\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\05af1e1d56ce011ee7470af02dbd6181\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\d685e4d59d0a6eca77c303fdddba5b7f\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\d685e4d59d0a6eca77c303fdddba5b7f\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\d952f13eea24263066045504387cfee0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\d952f13eea24263066045504387cfee0\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.persistence:db-framework:1.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\db-framework-1.1.1.aar\d3a62f1e1e01abe17980b88d54f87356\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.persistence:db-framework:1.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\db-framework-1.1.1.aar\d3a62f1e1e01abe17980b88d54f87356\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.persistence:db:1.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\db-1.1.1.aar\f8c02e014ffecc73ff640458c3bd2218\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.persistence:db:1.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\db-1.1.1.aar\f8c02e014ffecc73ff640458c3bd2218\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\livedata-1.1.1.aar\5a54034376c015bd1433bc9ff90168fa\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\livedata-1.1.1.aar\5a54034376c015bd1433bc9ff90168fa\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.1.aar\878b8911ab6f9bebc5945c76030bd831\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.1.aar\878b8911ab6f9bebc5945c76030bd831\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\e58a6824f9d66a2c5b39e009fd3c8b60\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\e58a6824f9d66a2c5b39e009fd3c8b60\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\6e3e7d5e2f9ac284189262d8ce7b399e\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\6e3e7d5e2f9ac284189262d8ce7b399e\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.1.aar\696b4d5c6cc2b8a87c87da02b08aea12\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.1.aar\696b4d5c6cc2b8a87c87da02b08aea12\AndroidManifest.xml:20:5-44
+INJECTED from C:\Users\benha\OneDrive\Documents\GitHub\FYP\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\benha\OneDrive\Documents\GitHub\FYP\app\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from C:\Users\benha\OneDrive\Documents\GitHub\FYP\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\benha\OneDrive\Documents\GitHub\FYP\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\benha\OneDrive\Documents\GitHub\FYP\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\Users\benha\OneDrive\Documents\GitHub\FYP\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\benha\OneDrive\Documents\GitHub\FYP\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\benha\OneDrive\Documents\GitHub\FYP\app\src\main\AndroidManifest.xml
+provider#android.arch.lifecycle.ProcessLifecycleOwnerInitializer
+ADDED from [android.arch.lifecycle:extensions:1.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\extensions-1.1.1.aar\2e9c31715291811843d45a2252231be9\AndroidManifest.xml:23:9-27:43
+	android:authorities
+		ADDED from [android.arch.lifecycle:extensions:1.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\extensions-1.1.1.aar\2e9c31715291811843d45a2252231be9\AndroidManifest.xml:25:13-68
+	android:multiprocess
+		ADDED from [android.arch.lifecycle:extensions:1.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\extensions-1.1.1.aar\2e9c31715291811843d45a2252231be9\AndroidManifest.xml:27:13-40
+	android:exported
+		ADDED from [android.arch.lifecycle:extensions:1.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\extensions-1.1.1.aar\2e9c31715291811843d45a2252231be9\AndroidManifest.xml:26:13-37
+	android:name
+		ADDED from [android.arch.lifecycle:extensions:1.1.1] C:\Users\benha\.gradle\caches\transforms-1\files-1.1\extensions-1.1.1.aar\2e9c31715291811843d45a2252231be9\AndroidManifest.xml:24:13-83
