@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import static android.view.View.GONE;
 import static android.view.View.generateViewId;
@@ -34,6 +35,7 @@ public class ReviewBehaviour extends Fragment implements View.OnClickListener {
 
     private int flashcardIndex = 0;
     private int databaseIndex;
+    private View view;
 
     public ReviewBehaviour() {
         // Required empty public constructor
@@ -43,7 +45,7 @@ public class ReviewBehaviour extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         //gets Application to use to start fModel
-        View view = inflater.inflate(R.layout.fragment_review_behaviour, container, false);
+        view = inflater.inflate(R.layout.fragment_review_behaviour, container, false);
         //get application in order to create a flashcard view model
         Application app = getActivity().getApplication();
         FlashcardViewModel fModel = new FlashcardViewModel(app);
@@ -59,16 +61,30 @@ public class ReviewBehaviour extends Fragment implements View.OnClickListener {
             initialCard(fList, questionText);
             databaseIndex = fList.get(flashcardIndex).getIndexValue();
         }
+        List<Button> buttonList = new ArrayList();
+        Button answer1 = view.findViewById(R.id.choice1);
+        Button answer2 = view.findViewById(R.id.choice2);
+        Button answer3 = view.findViewById(R.id.choice3);
+        Button answer4 = view.findViewById(R.id.choice4);
         Button continueButton = view.findViewById(R.id.continueButton);
         Button easyButton = view.findViewById(R.id.easyButton);
         Button mediumButton = view.findViewById(R.id.mediumButton);
         Button hardButton = view.findViewById(R.id.hardButton);
         Button incButton = view.findViewById(R.id.incorrectButton);
-        continueButton.setOnClickListener(this);
-        easyButton.setOnClickListener(this);
-        mediumButton.setOnClickListener(this);
-        hardButton.setOnClickListener(this);
-        incButton.setOnClickListener(this);
+        buttonList.add(answer1);
+        buttonList.add(answer2);
+        buttonList.add(answer3);
+        buttonList.add(answer4);
+        buttonList.add(continueButton);
+        buttonList.add(easyButton);
+        buttonList.add(mediumButton);
+        buttonList.add(hardButton);
+        buttonList.add(incButton);
+
+        for(int i = 0 ; i < buttonList.size() ; i++){
+            buttonList.get(i).setOnClickListener(this);
+        }
+
         return view;
     }
 
@@ -80,17 +96,37 @@ public class ReviewBehaviour extends Fragment implements View.OnClickListener {
         List<Flashcard> fList =  fModel.getReviewCards();
 
         int id = v.getId();
-        if(id == R.id.continueButton){
-            continuePressed(flashcardIndex, fList, fModel, questionText);
-        }else{
+        //checks if the button pressed is a mcq button and will only run continue button if answer is correct
+        if(id == R.id.choice1 || id == R.id.choice2 || id == R.id.choice3 || id == R.id.choice4){
+            Button button = view.findViewById(id);
+            Boolean test = button.getText().toString() == fList.get(flashcardIndex).getAText();
+            if(fList.get(flashcardIndex).getAText().equals(button.getText()) || fList.get(flashcardIndex).getQText().equals(button.getText()) ){
+                continuePressed(flashcardIndex, fList, fModel, questionText, id);
+            }
+            else{
+                Log.d("Test0230",test.toString());
+                Log.d("Test0230",button.getText().toString());
+                Log.d("Test0230",fList.get(flashcardIndex).getAText());
+                return;
+            }
+        }
+        else if(id == R.id.continueButton){
+            continuePressed(flashcardIndex, fList, fModel, questionText, id);
+        }
+        else{
             newCard(flashcardIndex, fList, fModel, questionText, id);
         }
 
     }
 
-    public void continuePressed(int index, List<Flashcard> f, FlashcardViewModel fm, TextView text){
+    public void continuePressed(int index, List<Flashcard> f, FlashcardViewModel fm, TextView text, int id){
         //get layout which contains difficulty buttons in order to set visibility
         LinearLayout buttons = getView().findViewById(R.id.buttonContainer);
+        LinearLayout multipleChoiceButtons = view.findViewById(R.id.multipleChoiceButtons);
+        multipleChoiceButtons.setVisibility(View.INVISIBLE);
+        //checks if it's mcq and if so sets the mcq options to invisible
+        if(formatChoice(f.get(flashcardIndex)) == 0){
+        }
         Button continueButton = getView().findViewById(R.id.continueButton);
         continueButton.setVisibility(GONE);
         buttons.setVisibility(View.VISIBLE);
@@ -99,12 +135,19 @@ public class ReviewBehaviour extends Fragment implements View.OnClickListener {
 
     public void newCard(int index, List<Flashcard> f, FlashcardViewModel fm, TextView text, int viewId){
         LinearLayout buttons = getView().findViewById(R.id.buttonContainer);
-        Button continueButton = getView().findViewById(R.id.continueButton);
+        Button pressedButton = getView().findViewById(viewId);
         //checks if it's out of bounds
         if(f.isEmpty()){
             endList();
             return;
         }
+
+        if(formatChoice(f.get(flashcardIndex)) == 0){
+            if(pressedButton.getText() == f.get(flashcardIndex).getAText()){
+
+            }
+        }
+
         //sets the local database index to update scores
         databaseIndex = f.get(index).getIndexValue();
         switch (viewId){
@@ -131,12 +174,24 @@ public class ReviewBehaviour extends Fragment implements View.OnClickListener {
             endList();
             return;
         }
+        int format = formatChoice(f.get(flashcardIndex));
+
+        switch (format){
+            case  0:
+                multipleChoiceEasy(f.get(flashcardIndex).getQText(), f.get(flashcardIndex).getAText());
+                break;
+            case  1:
+                multipleChoiceHard(f.get(flashcardIndex).getQText(), f.get(flashcardIndex).getAText());
+                break;
+            case  2:
+                normalFlashcard(f.get(flashcardIndex).getQText(), f.get(flashcardIndex).getAText());
+                break;
+        }
         //increments the flashcard list index
         //sets the new question text
-        text.setText(f.get(flashcardIndex).getQText());
+        //text.setText(f.get(flashcardIndex).getQText());
         //changes buttons over
         buttons.setVisibility(View.INVISIBLE);
-        continueButton.setVisibility(View.VISIBLE);
 
     }
 
@@ -147,6 +202,23 @@ public class ReviewBehaviour extends Fragment implements View.OnClickListener {
 
     public void initialCard(List<Flashcard> f, TextView text){
         text.setText(f.get(0).getQText());
+
+
+        int format = formatChoice(f.get(flashcardIndex));
+
+        switch (format){
+            case  0:
+                multipleChoiceEasy(f.get(flashcardIndex).getQText(), f.get(flashcardIndex).getAText());
+                break;
+            case  1:
+                multipleChoiceHard(f.get(flashcardIndex).getQText(), f.get(flashcardIndex).getAText());
+                break;
+            case  2:
+                normalFlashcard(f.get(flashcardIndex).getQText(), f.get(flashcardIndex).getAText());
+                break;
+        }
+
+
     }
 
     public int formatChoice(Flashcard f){
@@ -164,40 +236,94 @@ public class ReviewBehaviour extends Fragment implements View.OnClickListener {
     }
 
     public void multipleChoiceEasy(String question, String answer){
-        TextView questionText = getView().findViewById(R.id.questionText);
-        LinearLayout buttonContainer = getView().findViewById(R.id.multipleChoiceButtons);
+        LinearLayout buttonContainer = view.findViewById(R.id.multipleChoiceButtons);
+        TextView questionText = view.findViewById(R.id.card);
+        questionText.setText(question);
+        Button continueButton = view.findViewById(R.id.continueButton);
+        buttonContainer.setVisibility(View.VISIBLE);
+        continueButton.setVisibility(GONE);
         List<Button> buttonList = new ArrayList();
-        Button answer1 = getView().findViewById(R.id.choice1);
-        Button answer2 = getView().findViewById(R.id.choice2);
-        Button answer3 = getView().findViewById(R.id.choice3);
-        Button answer4 = getView().findViewById(R.id.choice4);
+        Button answer1 = view.findViewById(R.id.choice1);
+        Button answer2 = view.findViewById(R.id.choice2);
+        Button answer3 = view.findViewById(R.id.choice3);
+        Button answer4 = view.findViewById(R.id.choice4);
         buttonList.add(answer1);
         buttonList.add(answer2);
         buttonList.add(answer3);
         buttonList.add(answer4);
-        questionText.setText(question);
-        buttonContainer.setVisibility(View.VISIBLE);
+
+        Random rand = new Random();
+        ArrayList<Integer> usedIndex = new ArrayList<>();
+        for(int i = 0 ; i <= 3 ; i++){
+            int answerPos = rand.nextInt(4);
+            while(usedIndex.contains(answerPos)){
+                answerPos = rand.nextInt(4);
+            }
+            usedIndex.add(answerPos);
+        }
+        String correctAnswer = answer;
+        String[] answers = {"Test1", "Test2", "Test3", correctAnswer};
+        for(int i = 0 ; i <= 3 ; i++){
+            //sets the button texts to a randomly indexed answer
+            buttonList.get(i).setText(answers[usedIndex.get(i)]);
+        }
+        continueButton.setVisibility(View.GONE);
+    }
+
+    public Boolean checkAnswer(String answer, List<Flashcard> fList){
+        Boolean result = false;
+        if(answer == fList.get(flashcardIndex).getAText()){
+            result = true;
+        }
+        else{
+            result = false;
+        }
+        return result;
     }
 
     public void multipleChoiceHard(String question, String answer){
-        TextView questionText = getView().findViewById(R.id.questionText);
-        LinearLayout buttonContainer = getView().findViewById(R.id.multipleChoiceButtons);
+        LinearLayout buttonContainer = view.findViewById(R.id.multipleChoiceButtons);
+        TextView questionText = view.findViewById(R.id.card);
+        questionText.setText(answer);
+        Button continueButton = view.findViewById(R.id.continueButton);
+        buttonContainer.setVisibility(View.VISIBLE);
+        continueButton.setVisibility(GONE);
         List<Button> buttonList = new ArrayList();
-        Button answer1 = getView().findViewById(R.id.choice1);
-        Button answer2 = getView().findViewById(R.id.choice2);
-        Button answer3 = getView().findViewById(R.id.choice3);
-        Button answer4 = getView().findViewById(R.id.choice4);
+        Button answer1 = view.findViewById(R.id.choice1);
+        Button answer2 = view.findViewById(R.id.choice2);
+        Button answer3 = view.findViewById(R.id.choice3);
+        Button answer4 = view.findViewById(R.id.choice4);
         buttonList.add(answer1);
         buttonList.add(answer2);
         buttonList.add(answer3);
         buttonList.add(answer4);
-        questionText.setText(question);
-        buttonContainer.setVisibility(View.VISIBLE);
+
+        Random rand = new Random();
+        ArrayList<Integer> usedIndex = new ArrayList<>();
+        for(int i = 0 ; i <= 3 ; i++){
+            int answerPos = rand.nextInt(4);
+            while(usedIndex.contains(answerPos)){
+                answerPos = rand.nextInt(4);
+            }
+            usedIndex.add(answerPos);
+        }
+        String correctAnswer = question;
+        String[] answers = {"Test1", "Test2", "Test3", correctAnswer};
+        for(int i = 0 ; i <= 3 ; i++){
+            //sets the button texts to a randomly indexed answer
+            buttonList.get(i).setText(answers[usedIndex.get(i)]);
+        }
+        continueButton.setVisibility(View.GONE);
     }
 
     public void normalFlashcard(String question, String answer){
-        TextView questionText = getView().findViewById(R.id.questionText);
-        TextView answerText = getView().findViewById(R.id.answerText);
+        TextView questionText = view.findViewById(R.id.card);
+        questionText.setText(question);
+        LinearLayout buttons = view.findViewById(R.id.buttonContainer);
+        Button continueButton = view.findViewById(R.id.continueButton);
+        continueButton.setVisibility(View.VISIBLE);
+        buttons.setVisibility(GONE);
+
     }
 
 }
