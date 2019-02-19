@@ -202,10 +202,7 @@ public class ReviewBehaviour extends Fragment implements View.OnClickListener {
 
     public void initialCard(List<Flashcard> f, TextView text){
         text.setText(f.get(0).getQText());
-
-
         int format = formatChoice(f.get(flashcardIndex));
-
         switch (format){
             case  0:
                 multipleChoiceEasy(f.get(flashcardIndex).getQText(), f.get(flashcardIndex).getAText());
@@ -217,8 +214,6 @@ public class ReviewBehaviour extends Fragment implements View.OnClickListener {
                 normalFlashcard(f.get(flashcardIndex).getQText(), f.get(flashcardIndex).getAText());
                 break;
         }
-
-
     }
 
     public int formatChoice(Flashcard f){
@@ -262,10 +257,10 @@ public class ReviewBehaviour extends Fragment implements View.OnClickListener {
             usedIndex.add(answerPos);
         }
         String correctAnswer = answer;
-        String[] answers = {"Test1", "Test2", "Test3", correctAnswer};
+        ArrayList<String> answers = populateAnswerListEasy(correctAnswer);
         for(int i = 0 ; i <= 3 ; i++){
             //sets the button texts to a randomly indexed answer
-            buttonList.get(i).setText(answers[usedIndex.get(i)]);
+            buttonList.get(i).setText(answers.get(usedIndex.get(i)));
         }
         continueButton.setVisibility(View.GONE);
     }
@@ -308,10 +303,10 @@ public class ReviewBehaviour extends Fragment implements View.OnClickListener {
             usedIndex.add(answerPos);
         }
         String correctAnswer = question;
-        String[] answers = {"Test1", "Test2", "Test3", correctAnswer};
+        ArrayList<String> answers = populateAnswerListHard(correctAnswer);
         for(int i = 0 ; i <= 3 ; i++){
             //sets the button texts to a randomly indexed answer
-            buttonList.get(i).setText(answers[usedIndex.get(i)]);
+            buttonList.get(i).setText(answers.get(usedIndex.get(i)));
         }
         continueButton.setVisibility(View.GONE);
     }
@@ -326,4 +321,70 @@ public class ReviewBehaviour extends Fragment implements View.OnClickListener {
 
     }
 
+    public ArrayList<String> populateAnswerListEasy(String correctAnswer){
+        Application app = getActivity().getApplication();
+        FlashcardViewModel fModel = new FlashcardViewModel(app);
+        List<Flashcard> flashcardList = fModel.getAllFlashcards();
+        Random rand = new Random();
+        ArrayList<String> answers = new ArrayList<>();
+        ArrayList<String> usedAnswer = new ArrayList<>();
+
+        int flashcardCount = flashcardList.size();
+
+        //if statement for when there are not enough cards to populate dummy answers
+        if(flashcardCount < 4){
+            //TODO: create a resource of random Japanese words for now
+        }
+        else{
+            for(int i = 0 ; i <= 3 ; i++){
+                int index = rand.nextInt(flashcardCount);
+                while((flashcardList.get(index).getAText() == correctAnswer) && usedAnswer.contains(flashcardList.get(index))){
+                    index = rand.nextInt(flashcardCount);
+                }
+                Log.d("Test1542", "Not Working");
+                answers.add(flashcardList.get(index).getAText());
+                usedAnswer.add(flashcardList.get(index).getAText());
+            }
+        }
+        //PROBLEM: the app is not assigning answers properly
+
+        while(!answers.contains(correctAnswer)){
+            answers = populateAnswerListEasy(correctAnswer);
+        }
+
+        return answers;
+    }
+
+    public ArrayList<String> populateAnswerListHard(String correctAnswer){
+        Application app = getActivity().getApplication();
+        FlashcardViewModel fModel = new FlashcardViewModel(app);
+        List<Flashcard> flashcardList = fModel.getAllFlashcards();
+        Random rand = new Random();
+        ArrayList<String> answers = new ArrayList<>();
+        ArrayList<String> usedAnswer = new ArrayList<>();
+
+        int flashcardCount = flashcardList.size();
+
+        //if statement for when there are not enough cards to populate dummy answers
+        if(flashcardCount < 4){
+            //TODO: create a resource of random Japanese words for now
+        }
+        else{
+            for(int i = 0 ; i <= 3 ; i++){
+                int index = rand.nextInt(flashcardCount);
+                while((flashcardList.get(index).getQText() == correctAnswer) && usedAnswer.contains(flashcardList.get(index))){
+                    index = rand.nextInt(flashcardCount);
+                }
+                Log.d("Test1542", "Not Working");
+                answers.add(flashcardList.get(index).getQText());
+                usedAnswer.add(flashcardList.get(index).getAText());
+            }
+        }
+        while(!answers.contains(correctAnswer)){
+            answers = populateAnswerListHard(correctAnswer);
+        }
+        //PROBLEM: the app is not assigning answers properly
+
+        return answers;
+    }
 }
