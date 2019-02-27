@@ -21,6 +21,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
@@ -261,6 +262,7 @@ public class ReviewBehaviour extends Fragment implements View.OnClickListener {
         for(int i = 0 ; i <= 3 ; i++){
             //sets the button texts to a randomly indexed answer
             buttonList.get(i).setText(answers.get(usedIndex.get(i)));
+            Log.d("Test1542", ""+answers.get(i));
         }
         continueButton.setVisibility(View.GONE);
     }
@@ -295,6 +297,7 @@ public class ReviewBehaviour extends Fragment implements View.OnClickListener {
 
         Random rand = new Random();
         ArrayList<Integer> usedIndex = new ArrayList<>();
+
         for(int i = 0 ; i <= 3 ; i++){
             int answerPos = rand.nextInt(4);
             while(usedIndex.contains(answerPos)){
@@ -307,6 +310,7 @@ public class ReviewBehaviour extends Fragment implements View.OnClickListener {
         for(int i = 0 ; i <= 3 ; i++){
             //sets the button texts to a randomly indexed answer
             buttonList.get(i).setText(answers.get(usedIndex.get(i)));
+            Log.d("Test1542", ""+answers.get(i));
         }
         continueButton.setVisibility(View.GONE);
     }
@@ -324,34 +328,52 @@ public class ReviewBehaviour extends Fragment implements View.OnClickListener {
     public ArrayList<String> populateAnswerListEasy(String correctAnswer){
         Application app = getActivity().getApplication();
         FlashcardViewModel fModel = new FlashcardViewModel(app);
-        List<Flashcard> flashcardList = fModel.getAllFlashcards();
+        List<Flashcard> flashcardList = fModel.getReviewCards();
+        Log.d("Test1729", ""+flashcardList.size());
         Random rand = new Random();
         ArrayList<String> answers = new ArrayList<>();
-        ArrayList<String> usedAnswer = new ArrayList<>();
+        ArrayList<Integer> usedIndex = new ArrayList<>();
+        Flashcard correctCard;
 
+
+        int answerIndex = 0;
+
+        Iterator<Flashcard> testIterator = flashcardList.iterator();
+        int testIndex = 0;
+        while(testIterator.hasNext()){
+            if(testIterator.next().getAText().equals(correctAnswer)){
+                answerIndex = testIndex;
+            }
+            testIndex++;
+            Log.d("Test1727", correctAnswer);
+            Log.d("Test1728", testIterator.next().getAText());
+        }
+
+        flashcardList.remove(answerIndex);
         int flashcardCount = flashcardList.size();
-
         //if statement for when there are not enough cards to populate dummy answers
         if(flashcardCount < 4){
             //TODO: create a resource of random Japanese words for now
         }
         else{
-            for(int i = 0 ; i <= 3 ; i++){
+            for(int i = 0 ; i <= 2 ; i++){
                 int index = rand.nextInt(flashcardCount);
-                while((flashcardList.get(index).getAText() == correctAnswer) && usedAnswer.contains(flashcardList.get(index))){
+                while(usedIndex.contains(index)){
                     index = rand.nextInt(flashcardCount);
                 }
-                Log.d("Test1542", "Not Working");
                 answers.add(flashcardList.get(index).getAText());
-                usedAnswer.add(flashcardList.get(index).getAText());
+                usedIndex.add(index);
             }
         }
-        //PROBLEM: the app is not assigning answers properly
-
-        while(!answers.contains(correctAnswer)){
+        if(answers.contains(correctAnswer)){
             answers = populateAnswerListEasy(correctAnswer);
+        }else{
+            answers.add(correctAnswer);
         }
 
+        for(int i = 0 ; i < answers.size() ; i++){
+            Log.d("Test1621", ""+answers.get(i));
+        }
         return answers;
     }
 
@@ -361,7 +383,18 @@ public class ReviewBehaviour extends Fragment implements View.OnClickListener {
         List<Flashcard> flashcardList = fModel.getAllFlashcards();
         Random rand = new Random();
         ArrayList<String> answers = new ArrayList<>();
-        ArrayList<String> usedAnswer = new ArrayList<>();
+        ArrayList<Integer> usedIndex = new ArrayList<>();
+
+        int answerIndex = 0;
+
+        for(int i = 0 ; i < flashcardList.size() ; i ++){
+            if(flashcardList.get(i).getQText() == correctAnswer){
+                Log.d("Test1634", flashcardList.get(i).getQText());
+                answerIndex = i;
+            }
+        }
+
+        flashcardList.remove(answerIndex);
 
         int flashcardCount = flashcardList.size();
 
@@ -370,21 +403,26 @@ public class ReviewBehaviour extends Fragment implements View.OnClickListener {
             //TODO: create a resource of random Japanese words for now
         }
         else{
-            for(int i = 0 ; i <= 3 ; i++){
+            for(int i = 0 ; i <= 2 ; i++){
                 int index = rand.nextInt(flashcardCount);
-                while((flashcardList.get(index).getQText() == correctAnswer) && usedAnswer.contains(flashcardList.get(index))){
+                while(usedIndex.contains(index)){
                     index = rand.nextInt(flashcardCount);
                 }
-                Log.d("Test1542", "Not Working");
                 answers.add(flashcardList.get(index).getQText());
-                usedAnswer.add(flashcardList.get(index).getAText());
+                usedIndex.add(index);
             }
         }
-        while(!answers.contains(correctAnswer)){
-            answers = populateAnswerListHard(correctAnswer);
-        }
-        //PROBLEM: the app is not assigning answers properly
 
+        if(answers.contains(correctAnswer)){
+            answers = populateAnswerListHard(correctAnswer);
+        }else{
+            answers.add(correctAnswer);
+        }
+
+
+        for(int i = 0 ; i < answers.size() ; i++){
+            Log.d("Test1621", ""+answers.get(i));
+        }
         return answers;
     }
 }
