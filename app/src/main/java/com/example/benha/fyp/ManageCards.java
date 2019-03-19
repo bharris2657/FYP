@@ -25,7 +25,7 @@ import static android.app.Activity.RESULT_OK;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ManageCards extends Fragment {
+public class ManageCards extends Fragment{
 
     private FlashcardViewModel fModel;
 
@@ -55,6 +55,7 @@ public class ManageCards extends Fragment {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
+
         fModel = ViewModelProviders.of(getActivity()).get(FlashcardViewModel.class);
         //creates an observer to view the livedata list for changes
         fModel.getLiveCards().observe(getActivity(), new Observer<List<Flashcard>>() {
@@ -71,7 +72,6 @@ public class ManageCards extends Fragment {
                 fModel.deleteAll();
             }
         });
-
         return view;
     }
 
@@ -93,5 +93,6 @@ public class ManageCards extends Fragment {
 
         }
     }
+
 
 }

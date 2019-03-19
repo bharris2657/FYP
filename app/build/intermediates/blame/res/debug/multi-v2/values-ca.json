@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\benha\\OneDrive\\Documents\\GitHub\\FYP\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-ca\\values-ca.xml",
+            "outputFile": "C:\\Users\\benha\\Documents\\FYP\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-ca\\values-ca.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\benha\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\d952f13eea24263066045504387cfee0\\res\\values-ca\\values-ca.xml",
+                    "source": "C:\\Users\\benha\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\15c3bdb6fba2ef18a2dd85ffe9ea5b49\\res\\values-ca\\values-ca.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\benha\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\e9ee0f4d1cc7a02f0805bf011316d7b2\\res\\values-ca\\values-ca.xml",
+                    "source": "C:\\Users\\benha\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\dadeeace811be250ad4ea1ddf8ebf19b\\res\\values-ca\\values-ca.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",

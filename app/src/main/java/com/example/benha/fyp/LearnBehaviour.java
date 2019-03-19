@@ -47,11 +47,9 @@ public class LearnBehaviour extends Fragment implements View.OnClickListener{
         Button easyLearn = view.findViewById(R.id.easyLearn);
         Button mediumLearn = view.findViewById(R.id.mediumLearn);
         Button hardLearn = view.findViewById(R.id.hardLearn);
-        Button againLearn = view.findViewById(R.id.againLearn);
         easyLearn.setOnClickListener(this);
         mediumLearn.setOnClickListener(this);
         hardLearn.setOnClickListener(this);
-        againLearn.setOnClickListener(this);
         return view;
     }
 
@@ -62,7 +60,6 @@ public class LearnBehaviour extends Fragment implements View.OnClickListener{
         FlashcardViewModel fModel = new FlashcardViewModel(app);
         List<Flashcard> fList =  fModel.getLearnCards();
         newCard(flashcardIndex, fList, fModel, getView(),  id);
-        Log.d("Test1555", ""+flashcardIndex);
     }
 
     public void newCard(int index, List<Flashcard> f, FlashcardViewModel fm, View v, int id){
@@ -83,11 +80,7 @@ public class LearnBehaviour extends Fragment implements View.OnClickListener{
             case R.id.hardLearn:
                 fm.updateScore(databaseIndex, 5);
                 break;
-            case R.id.againLearn:
-                //insert code to make card appear again
-                break;
         }
-        Log.d("Test1524", ""+f.size());
         Application app = getActivity().getApplication();
         FlashcardViewModel fModel = new FlashcardViewModel(app);
         f = fModel.getLearnCards();

@@ -9,7 +9,8 @@
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:id="@+id/reviewContent">
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -82,6 +83,7 @@
             android:gravity="center"
             android:text="TextView"
             android:textSize="72dp"
+            android:autoSizeTextType="uniform"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -91,62 +93,154 @@
         <LinearLayout
             android:id="@+id/buttonContainer"
             android:layout_width="match_parent"
-            android:layout_height="114dp"
+            android:layout_height="358dp"
             android:layout_marginTop="89dp"
             android:layout_marginBottom="160dp"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:padding="5dp"
-            android:visibility="gone"
+            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/card">
+            app:layout_constraintTop_toBottomOf="@+id/card"
+            app:layout_constraintVertical_bias="0.245">
 
             <Button
                 android:id="@+id/easyButton"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="Easy" />
+                android:text="Easy"
+                android:visibility="visible" />
 
             <Button
                 android:id="@+id/mediumButton"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="Medium"/>
+                android:text="Medium"
+                android:visibility="visible" />
 
             <Button
                 android:id="@+id/hardButton"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="Hard" />
+                android:text="Hard"
+                android:visibility="visible" />
 
             <Button
                 android:id="@+id/incorrectButton"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="Wrong"/>
+                android:text="Wrong"
+                android:visibility="visible" />
         </LinearLayout>
 
         <Button
             android:id="@+id/continueButton"
-            android:layout_width="match_parent"
-            android:layout_height="114dp"
+            android:layout_width="234dp"
+            android:layout_height="180dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="116dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:text="Continue"
+            android:textSize="30dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/card"
-            app:layout_constraintVertical_bias="0.272" />
+            app:layout_constraintVertical_bias="0.226" />
+
+        <TextView
+            android:id="@+id/incorrectText"
+            android:layout_width="174dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/back2"
+            android:text="Incorrect Answer"
+            android:textSize="20dp"
+            android:textAlignment="center"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.112" />
+
+        <TextView
+            android:id="@+id/correctText"
+            android:layout_width="174dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@color/Green"
+            android:text="Correct"
+            android:textAlignment="center"
+            android:textSize="20dp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.112" />
 
 
+
+
+    </android.support.constraint.ConstraintLayout>
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="416dp"
+        android:layout_height="762dp"
+        android:id="@+id/postReviewContent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp"
+        android:visibility="invisible">
+
+        <Button
+            android:id="@+id/restartButton"
+            android:layout_width="234dp"
+            android:layout_height="180dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="116dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="Restart"
+            android:textSize="30dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.655" />
+
+        <TextView
+            android:id="@+id/postReviewText"
+            android:layout_width="320dp"
+            android:layout_height="179dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:autoSizeTextType="uniform"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="32dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.133" />
     </android.support.constraint.ConstraintLayout>
 </FrameLayout>

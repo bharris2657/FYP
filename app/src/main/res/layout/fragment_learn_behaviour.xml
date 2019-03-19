@@ -14,6 +14,7 @@
         android:gravity="center"
         android:text="TextView"
         android:textSize="72dp"
+        android:autoSizeTextType="uniform"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,6 +46,7 @@
         android:gravity="center"
         android:text="TextView"
         android:textSize="40dp"
+        android:autoSizeTextType="uniform"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -54,10 +56,10 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="115dp"
+        android:layout_height="238dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -67,31 +69,24 @@
 
         <Button
             android:id="@+id/easyLearn"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="1"
             android:text="Easy" />
 
         <Button
             android:id="@+id/mediumLearn"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="1"
             android:text="Medium" />
 
         <Button
             android:id="@+id/hardLearn"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="1"
             android:text="Hard" />
-
-        <Button
-            android:id="@+id/againLearn"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:text="Again" />
 
     </LinearLayout>
 

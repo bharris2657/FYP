@@ -5,7 +5,9 @@ import android.app.Application;
 import android.app.FragmentManager;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Environment;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -37,6 +39,7 @@ public class ReviewBehaviour extends Fragment implements View.OnClickListener {
     private int flashcardIndex = 0;
     private int databaseIndex;
     private View view;
+    private ArrayList<Flashcard> incorrectCards = new ArrayList<>();
 
     public ReviewBehaviour() {
         // Required empty public constructor
@@ -95,27 +98,48 @@ public class ReviewBehaviour extends Fragment implements View.OnClickListener {
         Application app = getActivity().getApplication();
         FlashcardViewModel fModel = new FlashcardViewModel(app);
         List<Flashcard> fList =  fModel.getReviewCards();
+        final TextView incorrectText = getView().findViewById(R.id.incorrectText);
+        final TextView correctText = getView().findViewById(R.id.correctText);
 
         int id = v.getId();
         //checks if the button pressed is a mcq button and will only run continue button if answer is correct
         if(id == R.id.choice1 || id == R.id.choice2 || id == R.id.choice3 || id == R.id.choice4){
             Button button = view.findViewById(id);
-            Boolean test = button.getText().toString() == fList.get(flashcardIndex).getAText();
             if(fList.get(flashcardIndex).getAText().equals(button.getText()) || fList.get(flashcardIndex).getQText().equals(button.getText()) ){
                 continuePressed(flashcardIndex, fList, fModel, questionText, id);
+                correctText.setVisibility(View.VISIBLE);
+                new CountDownTimer(1000, 1000) {
+
+                    public void onTick(long millisUntilFinished) {
+                    }
+
+                    public void onFinish() {
+                        correctText.setVisibility(GONE);
+                    }
+                }.start();
             }
             else{
-                Log.d("Test0230",test.toString());
-                Log.d("Test0230",button.getText().toString());
-                Log.d("Test0230",fList.get(flashcardIndex).getAText());
-                return;
+                //shows a notification saying they got the answer wrong then shows the next card
+                incorrectText.setVisibility(View.VISIBLE);
+                new CountDownTimer(2000, 1000) {
+
+                    public void onTick(long millisUntilFinished) {
+                    }
+
+                    public void onFinish() {
+                        incorrectText.setVisibility(GONE);
+                    }
+                }.start();
+                incorrectCards.add(fList.get(flashcardIndex));
+                newCard(flashcardIndex, fList, fModel, R.id.incorrectButton);
+
             }
         }
         else if(id == R.id.continueButton){
             continuePressed(flashcardIndex, fList, fModel, questionText, id);
         }
         else{
-            newCard(flashcardIndex, fList, fModel, questionText, id);
+            newCard(flashcardIndex, fList, fModel, id);
         }
 
     }
@@ -125,6 +149,7 @@ public class ReviewBehaviour extends Fragment implements View.OnClickListener {
         LinearLayout buttons = getView().findViewById(R.id.buttonContainer);
         LinearLayout multipleChoiceButtons = view.findViewById(R.id.multipleChoiceButtons);
         multipleChoiceButtons.setVisibility(View.INVISIBLE);
+        Button wrongButton = getView().findViewById(R.id.incorrectButton);
         //checks if it's mcq and if so sets the mcq options to invisible
         if(formatChoice(f.get(flashcardIndex)) == 0){
         }
@@ -132,14 +157,38 @@ public class ReviewBehaviour extends Fragment implements View.OnClickListener {
         continueButton.setVisibility(GONE);
         buttons.setVisibility(View.VISIBLE);
         text.setText(f.get(index).getAText());
+
+        if(formatChoice(f.get(index)) <= 1 ){
+            wrongButton.setVisibility(GONE);
+        }
+        else{
+            wrongButton.setVisibility(View.VISIBLE);
+        }
     }
 
-    public void newCard(int index, List<Flashcard> f, FlashcardViewModel fm, TextView text, int viewId){
+    public void newCard(int index, List<Flashcard> f, FlashcardViewModel fm, int viewId){
         LinearLayout buttons = getView().findViewById(R.id.buttonContainer);
         Button pressedButton = getView().findViewById(viewId);
+
         //checks if it's out of bounds
         if(f.isEmpty()){
-            endList();
+            Button restartButton = getView().findViewById(R.id.restartButton);
+            restartButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    endList();
+                }
+            });
+            ConstraintLayout mainLayout = getView().findViewById(R.id.reviewContent);
+            ConstraintLayout postLayout = getView().findViewById(R.id.postReviewContent);
+            TextView postText = getView().findViewById(R.id.postReviewText);
+            mainLayout.setVisibility(GONE);
+            postLayout.setVisibility(View.VISIBLE);
+            if(incorrectCards.size() == 0){
+                postText.setText("You got all flashcards correct, retry at any point to increase your scores");
+            }else{
+                postText.setText("You got " + incorrectCards.size() + " cards incorrect, go back to the First Look page to restart.");
+            }
             return;
         }
 
@@ -172,7 +221,23 @@ public class ReviewBehaviour extends Fragment implements View.OnClickListener {
         FlashcardViewModel fModel = new FlashcardViewModel(app);
         f = fModel.getReviewCards();
         if(flashcardIndex == f.size()){
-            endList();
+            Button restartButton = getView().findViewById(R.id.restartButton);
+            restartButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    endList();
+                }
+            });
+            ConstraintLayout mainLayout = getView().findViewById(R.id.reviewContent);
+            ConstraintLayout postLayout = getView().findViewById(R.id.postReviewContent);
+            TextView postText = getView().findViewById(R.id.postReviewText);
+            mainLayout.setVisibility(GONE);
+            postLayout.setVisibility(View.VISIBLE);
+            if(incorrectCards.size() == 0){
+                postText.setText("You got all flashcards correct, retry at any point to increase your scores");
+            }else{
+                postText.setText("You got " + incorrectCards.size() + " cards incorrect, go back to the First Look page to restart.");
+            }
             return;
         }
         int format = formatChoice(f.get(flashcardIndex));
@@ -259,10 +324,11 @@ public class ReviewBehaviour extends Fragment implements View.OnClickListener {
         }
         String correctAnswer = answer;
         ArrayList<String> answers = populateAnswerListEasy(correctAnswer);
+        Log.d("1600", ""+answers.size());
+        Log.d("1601", ""+buttonList.size());
         for(int i = 0 ; i <= 3 ; i++){
             //sets the button texts to a randomly indexed answer
             buttonList.get(i).setText(answers.get(usedIndex.get(i)));
-            Log.d("Test1542", ""+answers.get(i));
         }
         continueButton.setVisibility(View.GONE);
     }
@@ -310,7 +376,6 @@ public class ReviewBehaviour extends Fragment implements View.OnClickListener {
         for(int i = 0 ; i <= 3 ; i++){
             //sets the button texts to a randomly indexed answer
             buttonList.get(i).setText(answers.get(usedIndex.get(i)));
-            Log.d("Test1542", ""+answers.get(i));
         }
         continueButton.setVisibility(View.GONE);
     }
@@ -346,7 +411,6 @@ public class ReviewBehaviour extends Fragment implements View.OnClickListener {
             }
             testIndex++;
             Log.d("Test1727", correctAnswer);
-            Log.d("Test1728", testIterator.next().getAText());
         }
 
         flashcardList.remove(answerIndex);
@@ -354,6 +418,10 @@ public class ReviewBehaviour extends Fragment implements View.OnClickListener {
         //if statement for when there are not enough cards to populate dummy answers
         if(flashcardCount < 4){
             //TODO: create a resource of random Japanese words for now
+            answers.add("Green");
+            answers.add("Elbow");
+            answers.add("Bread");
+
         }
         else{
             for(int i = 0 ; i <= 2 ; i++){
@@ -401,6 +469,12 @@ public class ReviewBehaviour extends Fragment implements View.OnClickListener {
         //if statement for when there are not enough cards to populate dummy answers
         if(flashcardCount < 4){
             //TODO: create a resource of random Japanese words for now
+            answers.add("こんにちは");
+            answers.add("こんばんは");
+            answers.add("ありがとな");
+            answers.add("今日");
+            answers.add("朝日");
+            answers.add("ごはん");
         }
         else{
             for(int i = 0 ; i <= 2 ; i++){
